@@ -1,0 +1,18 @@
+{% extends 'customer_navbar.html' %}
+{% block title %} Customer Login {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+<b>Автомобиль : {{car.name}}</b>
+<form class="w3-container" action="/order_details/" method="post">
+    {% csrf_token %}
+    <b>Цена : {{cost_per_day}} wei per day</b><br><br>
+    <lable>Сколько дней</lable>
+    <input type="text" placeholder="2" name="days"><br><br>
+    <button class="btn" style="color: white; background-color: rgb(0, 98, 128);" type="submit">Подтвердить</button><br><br>
+    <input type="hidden" value="{{car.id}}" name="id">
+    <br><br>
+  </from>
+</div>
+{% endblock %}

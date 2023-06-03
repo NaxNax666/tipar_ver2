@@ -1,0 +1,39 @@
+{% extends 'car_dealer_navbar.html' %}
+{% block title %} Customer Login {% endblock %}
+{% block css %}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    th {
+        background-color: #72a716;
+        color: white;
+    }
+
+    th,
+    td {
+        border: 2px solid #ddd;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    {% for key, value in res.items %}
+    {% if key == 'blockHash' or key == 'logsBloom' or key == 'transactionHash' %}
+    {{ key }}: {{ value.hex }}<br>
+    {% else %}
+    {{ key }}: {{ value }}<br>
+    {% endif %}
+    {% endfor %}
+
+    </div>
+    {% endblock %}

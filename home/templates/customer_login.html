@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Customer Login {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+
+<form style="border:1px solid #ccc" method="POST"> {% csrf_token %}
+  <div class="container">
+    <h1>Вход арендатора</h1>
+    <p>Пожалуйста заполните эту форму для входа в свой аккаунт.</p>
+    <h6>Если вы еще не зарегестрированы нажмите сюда <a href="/customer_signup/">Регистрация</a></h6>
+    <hr>
+
+    <label><b>Имя пользователя</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label><b>Пароль</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    <br>
+      <button type="submit" class="btn" style="background-color: #71cc0971; font-size: 22px; width: 8rem;">Login</button>
+  </div>
+</form>
+</body>
+</html>
+{% endblock %}
+{% block js %}
+<script>
+  {% if alert %}
+  alert("Неверные данные")
+  document.location = "/customer_login"
+  {% endif %}
+</script>
+{% endblock %}

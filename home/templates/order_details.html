@@ -1,0 +1,17 @@
+{% extends 'customer_navbar.html' %}
+{% block title %} Customer Login {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+      <h3><b>Заказ завершен</b></h3>
+      <b>Ваш заказ транспорта был проведен!</b><br><br>
+      <b>Общая стоимость :</b> ₹ {{order.rent}}<br><br>
+      <b>Транспорт :</b> {{order.car.name}}<br><br>
+      <b>длительность :</b> {{order.days}} days<br><br>
+      <b>Арендодатель :</b> {{order.car_dealer.car_dealer.first_name}} {{order.car_dealer.car_dealer.last_name}}<br><br>
+      <b>Контакты арендодателя:</b> {{order.car_dealer.phone}}<br><br>
+      </div>
+      </div>
+</div>
+{% endblock %}

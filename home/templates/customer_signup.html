@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block title %} Customer Login {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<form style="border:1px solid #ccc" method="POST"> {% csrf_token %}
+    <div class="container">
+      <h1>Форма регистрации арендатора</h1>
+      <p>Пожалуйста заполните форму для создания аккаунта.</p>
+      <hr>
+  
+      <label><b>Имя</b></label>
+      <input type="text" placeholder="Enter First Name" name="first_name" required>
+
+      <label><b>Фамилия</b></label>
+      <input type="text" placeholder="Enter Last Name" name="last_name" required>
+
+      <label><b>Имя пользователя</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+  
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label><b>Контактный телефон</b></label>
+      <input type="text" placeholder="Enter Contact Number" name="phone" required>
+
+      <label><b>Город</b></label>
+      <input type="text" placeholder="Enter City" name="city" required>
+  
+      <label><b>Пароль</b></label>
+      <input type="password" placeholder="Enter Password" name="password1" required>
+
+      <label><b>Подтвердить пароль</b></label>
+      <input type="password" placeholder="Confirm Password" name="password2" required>
+            
+      <p>СОздавая аккаунт вы соглашаетесь с нашей <a href="#" style="color:dodgerblue">Политикой</a>.</p>
+  
+        <button type="submit" class="btn btn-success" style="background-color: #71cc0971; font-size: 22px; width: 8rem;">Зарегистрироваться</button>
+    </div>
+  </form>
+  </body>
+  </html>
+  {% endblock %}
+  {% block js %}
+  <script>
+    {% if alert %}
+    alert("Вы успешно зарегистрированы как арендатор")
+    document.location = "/customer_login"
+    {% endif %}
+  </script>
+  {% endblock %}

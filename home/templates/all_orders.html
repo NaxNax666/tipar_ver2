@@ -1,0 +1,74 @@
+{% extends 'car_dealer_navbar.html' %}
+{% block title %} Customer Login {% endblock %}
+{% block css %}
+<style>
+    h1 {
+        text-align: center;
+        color: black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    th {
+        background-color: #72a716;
+        color: white;
+    }
+
+    th,
+    td {
+        border: 2px solid #ddd;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    {% if all_orders %}
+    <h1 class="mt-4">Current Orders</h1>
+    <div class="users-table mt-4">
+        <table>
+            <tbody>
+                <tr>
+                    <th>Имя Арендатора</th>
+                    <th>Название Авто</th>
+                    <th>Изображение</th>
+                    <th>Дни</th>
+                    <th>Стоимость аренды</th>
+                    <th>Дата начала</th>
+                    <th>Адрес контракта</th>
+                    <th>Действие</th>
+                </tr>
+                {% for order in all_orders %}
+                <tr>
+                    <td>{{order.user.get_full_name}}</td>
+                    <td>{{order.car.name}}</td>
+                    <td><img src="{{order.car.image.url}}" alt="" width="100px" height="100px"></td>
+                    <td>{{order.days}}</td>
+                    <td> {{order.rent}} wei</td>
+                    <td>{{order.start_date}}</td>
+                    <td>{{order.smart_contract_address}}</td>
+                    <td><form action = "/complete_order/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{order.id}}">
+                        <button class="btn btn-primary" type="submit">Завершить аренду</button>
+                      </form>
+                    <form action = "/breake_order/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{order.id}}">
+                        <button class="btn btn-primary" type="submit">Прервать аренду</button>
+                      </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <br>
+        <h2>В данный момент нет активных аренд</h2>
+        {% endif %}
+    </div>
+    {% endblock %}

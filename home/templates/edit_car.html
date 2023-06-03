@@ -1,0 +1,51 @@
+{% extends 'car_dealer_navbar.html' %}
+{% block title %} Изменение автомобилей {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        <div class="row mt-2">
+            <div class="form-group col-md-12">
+                <label><i style="font-weight: bold;">Название авто</i></label>
+                <input type="text" class="form-control" name="car_name" value="{{car.name}}" required>
+            </div>
+        </div>
+        
+        <div class="row mt-3">
+            <div class="form-group col-md-6">
+                <label><i style="font-weight: bold;">Город</i></label>
+                <input type="text" class="form-control" name="city" value="{{car.location.city}}" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label><i style="font-weight: bold;">Изображение авто &nbsp;&nbsp;&nbsp;<a href="/media/{{car.image}}/">View Image</a></i></label>
+                <input type="file" class="form-control" name="image">
+            </div>
+        </div>
+    
+        <div class="row mt-3">
+            <div class="form-group col-md-12">
+                <label><i style="font-weight: bold;">Вместимость</i></label>
+                <input type="number" class="form-control" name="capacity" value="{{car.capacity}}" required>
+            </div>
+        </div>
+    
+        <div class="row mt-3">
+            <div class="form-group col-md-12">
+                <label><i style="font-weight: bold;">Аренда (в день)</i></label>
+                <input type="number" class="form-control" name="rent" value="{{car.rent}}" required>
+            </div>
+        </div>
+    
+        <button type="submit" class="btn btn-primary mt-4 btn-lg">Обновить</button>
+      </form>
+      </div>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Автомобиль успешно обновлен.");
+    document.location = "/all_cars"
+    {% endif %}
+</script>
+{% endblock %}
