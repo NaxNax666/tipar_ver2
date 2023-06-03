@@ -1,0 +1,8 @@
+Django
+django-crispy-forms
+crispy-bootstrap5
+Pillow
+web3
+urllib3==1.26.6
+eth_tester
+yoomoney
