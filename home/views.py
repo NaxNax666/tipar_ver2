@@ -249,7 +249,8 @@ def order_details(request):
             tx_hist = TX_history(order=order, tx_hash=tx_hash)
             tx_hist.save()
         except:
-            order = Order.objects.get(car=car, car_dealer=car_dealer, user=user, rent=rent, days=days, smart_contract_address = "", start_date="2022-01-01")
+            order = Order(car=car, car_dealer=car_dealer, user=user, rent=rent, days=days, smart_contract_address = "Trouble with eth. Check the balance", start_date="2022-01-01")
+
 
 
         car.is_available = False
